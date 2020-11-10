@@ -1,0 +1,28 @@
+[Enabled]
+Type=boolean
+Label=Enabled
+Default=True
+Description=If this event plug-in should respond to events.
+
+[ShotgunURL]
+Type=string
+Label=Shotgun URL
+Description=Your Shotgun URL.
+DisableIfBlank=false
+Default=
+
+[ShotgunScriptName]
+Type=string
+Label=Shotgun script name
+Description=Your Shotgun script name.
+Required=true
+DisableIfBlank=false
+Default=
+
+[ShotgunScriptKey]
+Type=password
+Label=Shotgun script key
+Description=Your Shotgun script key, which will look something like "bc29517b4928b8336e007ae48e71f082eb0e7c88".
+Required=true
+DisableIfBlank=false
+Default=
