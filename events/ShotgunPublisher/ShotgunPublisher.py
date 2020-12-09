@@ -5,7 +5,7 @@ from Deadline.Scripting import *
 
 # Function to get an instance of event listener
 def GetDeadlineEventListener():
-    return AutoChunker()
+    return ShotgunPublisherListener()
 
 
 # Cleanup function to ensure no memory leak
@@ -13,7 +13,7 @@ def CleanupDeadlineEventListener(eventListener):
     eventListener.Cleanup()
 
 
-class ShotgunPublisher(DeadlineEventListener):
+class ShotgunPublisherListener(DeadlineEventListener):
 
     def __init__(self):
         self.OnJobFinishedCallback += self.OnJobFinished
@@ -22,7 +22,7 @@ class ShotgunPublisher(DeadlineEventListener):
         self.sg_script_address = self.GetConfigEntryWithDefault("ShotgunURL", "")
 
     # Cleanup function to ensure no memory leak
-    def Cleanup(self):
+    def CleanupDeadlineEventListener(self):
         del self.OnJobFinishedCallback
     
     # This is called when a job is submitted.
@@ -30,3 +30,8 @@ class ShotgunPublisher(DeadlineEventListener):
         self.LogInfo('Event dziala')
         if job.JobName != "":
             self.LogInfo('++++++ %s' % job.JobName)
+        f = open("demofile2.txt", "a")
+        test = str(job.JobName)
+        f.write(test)
+        f.close()
+
